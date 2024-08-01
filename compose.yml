@@ -121,3 +121,9 @@ services:
     depends_on:
       db:
         condition: service_healthy
+  it-tools:
+    image: 'corentinth/it-tools:latest'
+    ports:
+      - '5545:80'
+    restart: unless-stopped
+    container_name: it-tools
