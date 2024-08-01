@@ -147,3 +147,9 @@ services:
       - "/volume1/docker/mosquitto/config:/mosquitto/config"
       - "/volume1/docker/mosquitto/data:/mosquitto/data"
       - "/volume1/docker/mosquitto/log:/mosquitto/log"
+  mqtt-explorer:
+    image: smeagolworms4/mqtt-explorer
+    container_name: mqtt-explorer
+    restart: unless-stopped
+    ports:
+      - 4000:4000
