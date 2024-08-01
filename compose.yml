@@ -153,3 +153,10 @@ services:
     restart: unless-stopped
     ports:
       - 4000:4000
+  adguardhome:
+    image: adguard/adguardhome
+    container_name: adguardhome
+    volumes:
+      - /volume1/docker/adguard/config:/opt/adguardhome/conf
+      - /volume1/docker/adguard/data:/opt/adguardhome/work
+    restart: unless-stopped
