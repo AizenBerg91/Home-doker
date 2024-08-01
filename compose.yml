@@ -127,3 +127,12 @@ services:
       - '5545:80'
     restart: unless-stopped
     container_name: it-tools
+  hass-configurator:
+    container_name: configurator
+    image: causticlab/hass-configurator-docker:latest
+    volumes:
+      - /volume1/docker/fileeditor:/config
+      - /volume1/docker/homeassistant:/hass-config
+    restart: always
+    ports:
+      - "3218:3218/tcp"
