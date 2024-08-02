@@ -1,5 +1,25 @@
 version: "3.9"
 services:
+ twportainer:
+    image: portainer/portainer-ce:latest
+    container_name: twportainer
+    environment:
+      - TZ=Europe/Moscow
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+      - /volume1/docker/portainer:/data
+    ports:
+      - "8000:8000"
+      - "9000:9000"
+    restart: always
+  homeassistant:
+    container_name: homeassistant
+    image: ghcr.io/home-assistant/home-assistant:stable
+    volumes:
+      - /volume1/docker/homeassistant:/config
+    ports:
+      - "8123:8123"
+    restart: always
   qrcode:
     container_name: QR-Code-Generator
     image: bizzycolah/qrcode-generator:latest
@@ -12,18 +32,6 @@ services:
     restart: on-failure:5
     ports:
       - 8895:80
-  twportainer:
-    image: portainer/portainer-ce:latest
-    container_name: twportainer
-    environment:
-      - TZ=Europe/Moscow
-    volumes:
-      - /var/run/docker.sock:/var/run/docker.sock
-      - /volume1/docker/portainer:/data
-    ports:
-      - "8000:8000"
-      - "9000:9000"
-    restart: always
   stirling-pdf:
     container_name: Stirling-PDF
     image: frooodle/s-pdf
@@ -161,4 +169,4 @@ services:
       - /volume1/docker/adguard/data:/opt/adguardhome/work
     network_mode: host
     restart: unless-stopped
-    
+
