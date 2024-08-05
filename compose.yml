@@ -177,7 +177,6 @@ services:
     ports:
     - 3002:3001
     restart: always
-    services:
   metube:
     image: ghcr.io/alexta69/metube
     container_name: metube
@@ -186,3 +185,14 @@ services:
     volumes:
       - /volume1/docker/metube/downloads:/downloads
     restart: always
+  homarr:
+    container_name: homarr
+    image: ghcr.io/ajnart/homarr:latest
+    restart: unless-stopped
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+      - /volume1/docker/homarr:/app/data/configs
+      - /volume1/docker/homarr/icons:/app/public/icons
+      - /volume1/docker/homarr/data:/data
+    ports:
+      - '7575:7575'
