@@ -169,4 +169,11 @@ services:
       - /volume1/docker/adguard/data:/opt/adguardhome/work
     network_mode: host
     restart: unless-stopped
-
+  uptime-kuma:
+    image: elestio/uptime-kuma:latest
+    container_name: uptime-kuma
+    volumes:
+    - /volume1/docker/kuma/data:/app/data
+    ports:
+    - 3002:3001
+    restart: always
