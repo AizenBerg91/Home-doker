@@ -12,7 +12,7 @@ services:
       - "8000:8000"
       - "9000:9000"
     restart: always
-  homeassistant:
+ homeassistant:
     container_name: homeassistant
     image: ghcr.io/home-assistant/home-assistant:stable
     volumes:
@@ -20,7 +20,7 @@ services:
     ports:
       - "8123:8123"
     restart: always
-  qrcode:
+ qrcode:
     container_name: QR-Code-Generator
     image: bizzycolah/qrcode-generator:latest
     healthcheck:
@@ -32,7 +32,7 @@ services:
     restart: on-failure:5
     ports:
       - 8895:80
-  stirling-pdf:
+ stirling-pdf:
     container_name: Stirling-PDF
     image: frooodle/s-pdf
     mem_limit: 4g
@@ -68,13 +68,13 @@ services:
      METRICS_ENABLED: true
      SYSTEM_GOOGLEVISIBILITY: false # or true
     restart: on-failure:5
-  drawio:
+ drawio:
     image: jgraph/drawio
     container_name: drawio
     restart: unless-stopped
     ports:
       - 5022:8080
-  db:
+ db:
     image: postgres:16
     container_name: FlowiseAI-DB
     hostname: flowise-db
@@ -94,8 +94,7 @@ services:
       POSTGRES_USER: flowiseuser
       POSTGRES_PASSWORD: flowisepass
     restart: on-failure:5
-
-  flowise:
+ flowise:
     image: flowiseai/flowise:latest
     container_name: FlowiseAI
     hostname: flowise
@@ -129,13 +128,13 @@ services:
     depends_on:
       db:
         condition: service_healthy
-  it-tools:
+ it-tools:
     image: 'corentinth/it-tools:latest'
     ports:
       - '5545:80'
     restart: unless-stopped
     container_name: it-tools
-  hass-configurator:
+ hass-configurator:
     container_name: configurator
     image: causticlab/hass-configurator-docker:latest
     volumes:
@@ -144,7 +143,7 @@ services:
     restart: always
     ports:
       - "3218:3218/tcp"
-  mosquitto:
+ mosquitto:
     image: eclipse-mosquitto
     container_name: mosquitto
     restart: unless-stopped
@@ -155,13 +154,13 @@ services:
       - "/volume1/docker/mosquitto/config:/mosquitto/config"
       - "/volume1/docker/mosquitto/data:/mosquitto/data"
       - "/volume1/docker/mosquitto/log:/mosquitto/log"
-  mqtt-explorer:
+ mqtt-explorer:
     image: smeagolworms4/mqtt-explorer
     container_name: mqtt-explorer
     restart: unless-stopped
     ports:
       - 4000:4000
-  adguardhome:
+ adguardhome:
     image: adguard/adguardhome
     container_name: adguardhome
     volumes:
@@ -169,7 +168,7 @@ services:
       - /volume1/docker/adguard/data:/opt/adguardhome/work
     network_mode: host
     restart: unless-stopped
-  uptime-kuma:
+ uptime-kuma:
     image: elestio/uptime-kuma:latest
     container_name: uptime-kuma
     volumes:
@@ -177,7 +176,7 @@ services:
     ports:
     - 3002:3001
     restart: always
-  metube:
+ metube:
     image: ghcr.io/alexta69/metube
     container_name: metube
     ports:
@@ -185,7 +184,7 @@ services:
     volumes:
       - /volume1/docker/metube/downloads:/downloads
     restart: always
-  homarr:
+ homarr:
     container_name: homarr
     image: ghcr.io/ajnart/homarr:latest
     restart: unless-stopped
