@@ -168,6 +168,9 @@ services:
       - /volume1/docker/adguard/data:/opt/adguardhome/work
     network_mode: host
     restart: unless-stopped
+    users:
+  - name: aizen
+    password: Qweqwe123
  uptime-kuma:
     image: elestio/uptime-kuma:latest
     container_name: uptime-kuma
@@ -195,3 +198,22 @@ services:
       - /volume1/docker/homarr/data:/data
     ports:
       - '7575:7575'
+services:
+  emby:
+    image: lscr.io/linuxserver/emby:latest
+    container_name: emby
+    environment:
+      - PUID=1026
+      - PGID=100
+      - TZ=Etc/UTC
+    volumes:
+    - /volume1/docker/emby:/config
+    - /volume1/docker/emby/tvshows:/tvshows
+    - /volume1/docker/emby/music/:/music
+    - /volume1/Xpenology:/movies
+    ports:
+    - 1900:1900
+    - 7359:7359
+    - 8096:8096
+    - 8920:8920
+    restart: unless-stopped
