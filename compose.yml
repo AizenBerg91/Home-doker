@@ -198,8 +198,7 @@ services:
       - /volume1/docker/homarr/data:/data
     ports:
       - '7575:7575'
-services:
-  emby:
+ emby:
     image: lscr.io/linuxserver/emby:latest
     container_name: emby
     environment:
