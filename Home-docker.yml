@@ -1,0 +1,47 @@
+version: "3.9"
+services:
+ twportainer:
+    image: portainer/portainer-ce:latest
+    container_name: twportainer
+    environment:
+      - TZ=Europe/Moscow
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+      - /volume1/docker/portainer:/data
+    ports:
+      - "8000:8000"
+      - "9000:9000"
+    restart: always
+ drawio:
+    image: jgraph/drawio
+    container_name: drawio
+    restart: unless-stopped
+    ports:
+      - 5022:8080
+ adguardhome:
+    image: adguard/adguardhome
+    container_name: adguardhome
+    volumes:
+      - /volume1/docker/adguard/config:/opt/adguardhome/conf
+      - /volume1/docker/adguard/data:/opt/adguardhome/work
+    network_mode: host
+    restart: unless-stopped
+ uptime-kuma:
+    image: elestio/uptime-kuma:latest
+    container_name: uptime-kuma
+    volumes:
+    - /volume1/docker/kuma/data:/app/data
+    ports:
+    - 3002:3001
+    restart: always
+ homarr:
+    container_name: homarr
+    image: ghcr.io/ajnart/homarr:latest
+    restart: unless-stopped
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+      - /volume1/docker/homarr:/app/data/configs
+      - /volume1/docker/homarr/icons:/app/public/icons
+      - /volume1/docker/homarr/data:/data
+    ports:
+      - '7575:7575'
