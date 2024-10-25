@@ -34,14 +34,95 @@ services:
     ports:
     - 3002:3001
     restart: always
- homarr:
-    container_name: homarr
-    image: ghcr.io/ajnart/homarr:latest
-    restart: unless-stopped
+ dashy:
+    container_name: Dashy
+    image: lissy93/dashy
     volumes:
-      - /var/run/docker.sock:/var/run/docker.sock
-      - /volume1/docker/homarr:/app/data/configs
-      - /volume1/docker/homarr/icons:/app/public/icons
-      - /volume1/docker/homarr/data:/data
+       - /volume1/docker/dashy/conf.yml:/app/user-data/conf.yml
     ports:
-      - '7575:7575'
+      - 4040:8080
+    environment:
+      UID: 1026
+      GID: 100
+      NODE_ENV: production
+    restart: unless-stopped
+    healthcheck:
+      test: ['CMD', 'node', '/app/services/healthcheck']
+      interval: 1m30s
+      timeout: 10s
+      retries: 3
+      start_period: 40s
+ webcheck:
+    container_name: Web-Check
+    image: lissy93/web-check
+    mem_limit: 4g
+    cpu_shares: 768
+    security_opt:
+      - no-new-privileges:true
+    restart: on-failure:5
+    ports:
+      - 6160:3000
+ tubesync:
+    container_name: Tubesync
+    image: ghcr.io/meeb/tubesync:latest
+    mem_limit: 6g
+    cpu_shares: 768
+    security_opt:
+      - no-new-privileges:false
+    restart: on-failure:5
+    ports:
+      - 4848:4848
+    volumes:
+      - /volume1/docker/tubesync/config:/config:rw
+      - /volume1/docker/tubesync/downloads:/downloads:rw
+    environment:
+     TZ: Europe/Bucharest
+     HTTP_USER: aizen
+     HTTP_PASS: <fhhfrelf_21-02
+     PUID: 1026
+     PGID: 100
+ db:
+    image: postgres:16
+    container_name: Linkwarden-DB
+    hostname: linkwarden-db
+    mem_limit: 1g
+    cpu_shares: 768
+    security_opt:
+      - no-new-privileges:true
+    healthcheck:
+      test: ["CMD", "pg_isready", "-q", "-d", "linkwarden", "-U", "linkwardenuser"]
+      timeout: 45s
+      interval: 10s
+      retries: 10
+    volumes:
+      - /volume1/docker/linkwarden/db:/var/lib/postgresql/data:rw
+    environment:
+      POSTGRES_DB: linkwarden
+      POSTGRES_USER: linkwardenuser
+      POSTGRES_PASSWORD: linkwardenpass
+    restart: on-failure:5
+ linkwarden:
+    image: ghcr.io/linkwarden/linkwarden:latest
+    container_name: Linkwarden
+    hostname: linkwarden
+    mem_limit: 2g
+    cpu_shares: 768
+    security_opt:
+      - no-new-privileges:true
+    ports:
+      - 7461:3000
+    volumes:
+      - /volume1/docker/linkwarden/data:/data/data:rw
+    environment:
+      DATABASE_URL: postgres://linkwardenuser:linkwardenpass@linkwarden-db:5432/linkwarden
+      NEXTAUTH_SECRET: v6M37byB5LwYHCPZyCJzDGNUSsHY4grj
+      NEXTAUTH_URL: http://localhost:3000/api/v1/auth
+# Additional Optional Settings
+#      PAGINATION_TAKE_COUNT: 
+#      STORAGE_FOLDER: 
+#      AUTOSCROLL_TIMEOUT: 
+      NEXT_PUBLIC_DISABLE_REGISTRATION: false #or true
+    restart: on-failure:5
+    depends_on:
+      db:
+        condition: service_healthy
