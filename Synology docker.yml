@@ -117,12 +117,65 @@ services:
       DATABASE_URL: postgres://linkwardenuser:linkwardenpass@linkwarden-db:5432/linkwarden
       NEXTAUTH_SECRET: v6M37byB5LwYHCPZyCJzDGNUSsHY4grj
       NEXTAUTH_URL: http://localhost:3000/api/v1/auth
-# Additional Optional Settings
-#      PAGINATION_TAKE_COUNT: 
-#      STORAGE_FOLDER: 
-#      AUTOSCROLL_TIMEOUT: 
       NEXT_PUBLIC_DISABLE_REGISTRATION: false #or true
     restart: on-failure:5
     depends_on:
       db:
         condition: service_healthy
+  stirling-pdf:
+    container_name: Stirling-PDF
+    image: frooodle/s-pdf
+    mem_limit: 4g
+    cpu_shares: 1024
+    security_opt:
+      - no-new-privileges:true
+    healthcheck:
+      test: timeout 10s bash -c ':> /dev/tcp/127.0.0.1/8080' || exit 1
+      interval: 10s
+      timeout: 5s
+      retries: 3
+      start_period: 90s
+    ports:
+      - 7890:8080
+    volumes:
+      - /volume1/docker/stirling/data:/usr/share/tessdata:rw # Required for extra OCR languages
+      - /volume1/docker/stirling/config:/configs:rw
+      - /volume1/docker/stirling/logs:/logs:rw
+    environment:
+     PUID: 1026
+     PGID: 100
+     DOCKER_ENABLE_SECURITY: true # or false
+     SECURITY_ENABLELOGIN: true #or false
+     SECURITY_INITIALLOGIN_USERNAME: aizen
+     SECURITY_INITIALLOGIN_PASSWORD: Qweqwe123   
+     INSTALL_BOOK_AND_ADVANCED_HTML_OPS: false #or true
+     SECURITY_CSRFDISABLED: true #or false
+     SYSTEM_DEFAULTLOCALE: en_US # or fr_FR or de_DE
+     UI_APPNAME: aizenPDF
+     UI_HOMEDESCRIPTION: Aizen PDF Description
+     UI_APPNAMENAVBAR: Aizen PDF
+     SYSTEM_MAXFILESIZE: 5000 # Set the maximum file size in MB
+     METRICS_ENABLED: true
+     SYSTEM_GOOGLEVISIBILITY: false # or true
+    restart: on-failure:5
+  codeserver:
+    container_name: Code-Server
+    image: ghcr.io/linuxserver/code-server
+    healthcheck:
+     test: curl -f http://localhost:8443/ || exit 1
+    mem_limit: 6g
+    cpu_shares: 768
+    security_opt:
+      - no-new-privileges:false
+    restart: on-failure:5
+    ports:
+      - 8377:8443
+    volumes:
+      - /volume1/docker/codeserver:/config:rw
+    environment:
+      TZ: Europe/Bucharest
+      PUID: 1026
+      PGID: 100
+      PROXY_DOMAIN: cr.aizen.myds.me
+      PASSWORD: <fhhfrelf_21-02
+      SUDO_PASSWORD: <fhhfrelf_21-02
