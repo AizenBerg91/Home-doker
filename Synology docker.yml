@@ -18,14 +18,6 @@ services:
     restart: unless-stopped
     ports:
       - 5022:8080
- adguardhome:
-    image: adguard/adguardhome
-    container_name: adguardhome
-    volumes:
-      - /volume1/docker/adguard/config:/opt/adguardhome/conf
-      - /volume1/docker/adguard/data:/opt/adguardhome/work
-    network_mode: host
-    restart: unless-stopped
  uptime-kuma:
     image: elestio/uptime-kuma:latest
     container_name: uptime-kuma
@@ -117,12 +109,12 @@ services:
       DATABASE_URL: postgres://linkwardenuser:linkwardenpass@linkwarden-db:5432/linkwarden
       NEXTAUTH_SECRET: v6M37byB5LwYHCPZyCJzDGNUSsHY4grj
       NEXTAUTH_URL: http://localhost:3000/api/v1/auth
-      NEXT_PUBLIC_DISABLE_REGISTRATION: false #or true
+      NEXT_PUBLIC_DISABLE_REGISTRATION: false 
     restart: on-failure:5
     depends_on:
       db:
         condition: service_healthy
-  stirling-pdf:
+ stirling-pdf:
     container_name: Stirling-PDF
     image: frooodle/s-pdf
     mem_limit: 4g
@@ -158,7 +150,7 @@ services:
      METRICS_ENABLED: true
      SYSTEM_GOOGLEVISIBILITY: false # or true
     restart: on-failure:5
-  codeserver:
+ codeserver:
     container_name: Code-Server
     image: ghcr.io/linuxserver/code-server
     healthcheck:

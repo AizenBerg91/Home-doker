@@ -1,19 +1,19 @@
 version: "3.9"
 services:
- mosquitto:
-    image: eclipse-mosquitto
-    container_name: mosquitto
-    restart: unless-stopped
-    ports:
-      - 1883:1883
-      - 9001:9001
+ homeassistant:
+    container_name: homeassistant
+    image: ghcr.io/home-assistant/home-assistant:stable
     volumes:
-      - "/volume1/docker/mosquitto/config:/mosquitto/config"
-      - "/volume1/docker/mosquitto/data:/mosquitto/data"
-      - "/volume1/docker/mosquitto/log:/mosquitto/log"
- mqtt-explorer:
-    image: smeagolworms4/mqtt-explorer
-    container_name: mqtt-explorer
-    restart: unless-stopped
+      - /volume1/docker/homeassistant:/config
     ports:
-      - 4000:4000
+      - "8123:8123"
+    restart: always
+ hass-configurator:
+    container_name: configurator
+    image: causticlab/hass-configurator-docker:latest
+    volumes:
+      - /volume1/docker/fileeditor:/config
+      - /volume1/docker/homeassistant:/hass-config
+    restart: always
+    ports:
+      - "3218:3218/tcp"
