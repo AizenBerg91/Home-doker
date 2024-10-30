@@ -1,322 +1,337 @@
-pageInfo:
-  title: 'ДАШБОРД '
-  description: тест
-  navLinks:
-    - title: тест1
-      path: тест2
-      target: sametab
-    - title: тест3
-      path: тест4
-      target: newtab
-  footerText: ''
-appConfig:
-  theme: basic
-  layout: auto
-  iconSize: large
-  language: ru
-  statusCheck: false
-  statusCheckInterval: 60
-  auth:
-    enableGuestAccess: true
-    users:
-      - user: admin
-        hash: 8C6976E5B5410415BDE908BD4DEE15DFB167A9C873FC4BB8A81F6F2AB448A918
-        type: admin
-    enableKeycloak: false
-  showSplashScreen: false
-  preventWriteToDisk: false
-  preventLocalSave: false
-  disableConfiguration: false
-  disableConfigurationForNonAdmin: true
-  allowConfigEdit: true
-  enableServiceWorker: false
-  disableContextMenu: true
-  disableUpdateChecks: false
-  disableSmartSort: true
-  enableErrorReporting: false
-sections:
-  - name: Часы и Погода
-    icon: far fa-cloud
-    displayData:
-      collapsed: false
-      hideForGuests: false
-      sortBy: default
-      rows: 1
-      cols: 1
-    widgets:
-      - type: clock
-        id: 0_11917_clock
-      - type: weather
-        options:
-          apiKey: efdbade728b37086877a5e83442004db
-          city: Moscow
-        id: 1_11917_weather
-    filteredItems: []
-  - name: Ссылки быстрого доступа
-    icon: fas fa-list
-    displayData:
-      sortBy: default
-      rows: 1
-      cols: 1
-      collapsed: false
-      hideForGuests: false
-    items:
-      - &ref_0
-        title: Фридом
-        description: Фридом
-        icon: >-
-          https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT-48vimLCj4CB5m24VHN2RZBsMjLxYLn5EvQ&s
-        url: https://lk.freedom1.ru/user/login
-        target: newtab
-        id: 0_22831_
-      - &ref_1
-        title: github
-        description: awweso.me
-        icon: https://cdn.jsdelivr.net/gh/walkxcode/dashboard-icons/svg/github.svg
-        url: https://github.com/AizenBerg91/Home-doker
-        id: 1_22831_github
-      - &ref_2
-        title: AdminVPS
-        icon: >-
-          https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSVy2-magfOcfel3AnSfLDjDi8gYJ4VWbhGoQ&s
-        url: https://my.adminvps.ru/clientarea.php?action=services
-        id: 2_22831_adminvps
-    filteredItems:
-      - *ref_0
-      - *ref_1
-      - *ref_2
-  - name: Сервера и Сервисы
-    icon: fas fa-server
-    items:
-      - &ref_3
-        title: Synology
-        description: тест
-        icon: >-
-          https://play-lh.googleusercontent.com/HjbYWbXJ-6e6Cia-mBbHDSdontW1yE6MHMaXqlHW80CQegDOEPQ1HGACxvEpnqCUHgo
-        url: https://ds.aizen.myds.me/
-        target: newtab
-        statusCheck: true
-        statusCheckAllowInsecure: true
-        statusCheckAcceptCodes: '200'
-        id: 0_16241_synology
-      - &ref_4
-        title: Portainer
-        description: тест
-        icon: >-
-          https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSMhgdU2EN97vkzxX--YB_sznBmTz0SJpnbKg&s
-        url: http://aizen.myds.me:9000/
-        target: newtab
-        id: 1_16241_portainer
-      - &ref_5
-        title: Adguard
-        description: тест
-        icon: >-
-          https://static-00.iconduck.com/assets.00/adguard-home-icon-507x512-ovjn0dm6.png
-        url: https://ad.aizen.myds.me/
-        target: newtab
-        id: 2_16241_adguard
-      - &ref_6
-        title: Kuma
-        description: тест
-        icon: >-
-          https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRgXGlZworXJd3VTGR7B2O6pjrt7zbceGW32w&s
-        url: http://aizen.myds.me:3002/
-        target: newtab
-        id: 3_16241_kuma
-      - &ref_7
-        title: Создание диаграмм
-        description: draw.io
-        icon: https://cdn.jsdelivr.net/gh/walkxcode/dashboard-icons/png/draw-io.png
-        url: http://aizen.myds.me:5022
-        target: newtab
-        id: 4_16241_
-      - &ref_8
-        title: Web Check
-        icon: >-
-          https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSnrPqqAcJdA_NRKJtvDD8y-yG9FkdhAb-afw&s
-        url: https://wc.aizen.myds.me/
-        id: 5_16241_webcheck
-      - &ref_9
-        title: Linkwarden
-        icon: >-
-          https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSn_-T6zBBrOp0rjQsSX-TXgpkXnWrKgSW3Qg&s
-        url: https://ln.aizen.myds.me/
-        id: 6_16241_linkwarden
-    displayData:
-      sortBy: default
-      rows: 2
-      cols: 1
-      collapsed: false
-      hideForGuests: false
-    filteredItems:
-      - *ref_3
-      - *ref_4
-      - *ref_5
-      - *ref_6
-      - *ref_7
-      - *ref_8
-      - *ref_9
-  - name: Медиа
-    icon: fas fa-play
-    displayData:
-      sortBy: default
-      rows: 1
-      cols: 1
-      collapsed: false
-      hideForGuests: false
-    items:
-      - &ref_10
-        title: Emby
-        description: Emby
-        icon: >-
-          https://play-lh.googleusercontent.com/x2eHcquFzIsSuhwXmbvD_xouXUxMkAfdak0z8zayXU_OzC9yYxBdbur3nE_kE4kazg
-        url: https://eb.aizen.myds.me/
-        target: newtab
-        id: 0_5357_emby
-      - &ref_11
-        title: TubeSync
-        icon: >-
-          https://d4.alternativeto.net/-pZpAgknXT7r-xHoiOhxe-qAnblMPHpPdMh7uqwPYMc/rs:fit:280:280:0/g:ce:0:0/exar:1/YWJzOi8vZGlzdC9pY29ucy90dWJlc3luY18yMTk4MDMucG5n.png
-        url: https://tc.aizen.myds.me/
-        id: 1_5357_tubesync
-    filteredItems:
-      - *ref_10
-      - *ref_11
-  - name: Умный Дом
-    icon: fas fa-desktop
-    displayData:
-      sortBy: default
-      rows: 1
-      cols: 1
-      collapsed: false
-      hideForGuests: false
-    items:
-      - &ref_12
-        title: Home Assistant
-        description: тест
-        icon: >-
-          https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS_YgjLbJ1NuCG6Ejyr1uvW7NhjOY5QLIzesw&s
-        url: https://ha.aizen.myds.me/
-        statusCheck: true
-        statusCheckAllowInsecure: true
-        statusCheckAcceptCodes: '200'
-        target: newtab
-        id: 0_8654_homeassistant
-      - &ref_13
-        title: Configurator
-        description: тест
-        icon: https://brands.home-assistant.io/_/configurator/logo.png
-        url: http://aizen.myds.me:3218/
-        target: newtab
-        id: 1_8654_configurator
-      - &ref_14
-        title: Mqtt Explorer
-        description: тест
-        icon: https://mqtt-explorer.com/icon.png
-        url: http://aizen.myds.me:4000/
-        target: newtab
-        id: 2_8654_mqttexplorer
-      - &ref_15
-        title: Yandex
-        description: Yandex
-        icon: https://cdn.jsdelivr.net/gh/walkxcode/dashboard-icons/svg/yandex.svg
-        url: https://yandex.ru/quasar/
-        id: 3_8654_yandex
-      - &ref_16
-        title: Кузя
-        icon: >-
-          https://avatars.mds.yandex.net/get-dialogs/1676983/44f6c581790b6e022aa9/catalogue-icon-x4
-        url: https://alexstar.ru/smarthome
-        id: 4_8654_
-    filteredItems:
-      - *ref_12
-      - *ref_13
-      - *ref_14
-      - *ref_15
-      - *ref_16
-  - name: Устройства
-    icon: fas fa-pencil
-    displayData:
-      sortBy: default
-      rows: 1
-      cols: 1
-      collapsed: false
-      hideForGuests: false
-    items:
-      - &ref_17
-        title: Eltex
-        description: Eltex
-        icon: >-
-          https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR2ufkkgj0OyEHApstbUYmzd6eLzN9nS67zYdl66D4_wLIMrYR-D65_2rSyRit9aPhMROM&usqp=CAU
-        url: http://192.168.99.1
-        target: newtab
-        id: 0_10818_eltex
-      - &ref_18
-        title: Tp-link
-        description: Tp-link
-        icon: https://cdn.jsdelivr.net/gh/walkxcode/dashboard-icons/png/tp-link.png
-        url: http://192.168.2.6
-        target: newtab
-        id: 1_10818_tplink
-      - &ref_19
-        title: Asus
-        description: Asus
-        icon: >-
-          https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSvYrjhLB3UJZDjsvkfNCX1WOJM4mM_RKMW_w&s
-        url: http://192.168.2.3
-        target: newtab
-        id: 2_10818_asus
-      - &ref_20
-        title: Zyxel
-        description: Zyxel
-        icon: >-
-          https://cdn.jsdelivr.net/gh/walkxcode/dashboard-icons/svg/zyxel-communications.svg
-        url: http://192.168.2.5
-        target: newtab
-        id: 3_10818_zyxel
-      - &ref_21
-        title: Hikvision
-        description: Hikvision
-        icon: >-
-          https://cdn.jsdelivr.net/gh/walkxcode/dashboard-icons/svg/hikvision.svg
-        url: http://192.168.2.9
-        target: newtab
-        id: 4_10818_hikvision
-      - &ref_22
-        title: Trassir
-        description: Trassir
-        icon: https://www.aktivsb.ru/images/brendy/trassir.png
-        url: http://192.168.2.8
-        target: newtab
-        id: 5_10818_trassir
-    filteredItems:
-      - *ref_17
-      - *ref_18
-      - *ref_19
-      - *ref_20
-      - *ref_21
-      - *ref_22
-  - name: VPS
-    icon: fas fa-server
-    displayData:
-      sortBy: default
-      rows: 1
-      cols: 1
-      collapsed: false
-      hideForGuests: false
-    items:
-      - &ref_23
-        title: Portainer
-        icon: >-
-          https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSMhgdU2EN97vkzxX--YB_sznBmTz0SJpnbKg&s
-        url: https://45.129.186.42:9443/#!/auth
-        id: 0_249_portainer
-      - &ref_24
-        title: wireguard
-        icon: >-
-          https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcToJsljDAjndIVVciZ089VNqe_FMH3XRT11jQ&s
-        url: http://45.129.186.42:51821/
-        id: 1_249_wireguard
-    filteredItems:
-      - *ref_23
-      - *ref_24
+{
+  "pageInfo": {
+    "title": "ДАШБОРД ",
+    "description": "тест",
+    "navLinks": [
+      {
+        "title": "тест1",
+        "path": "тест2",
+        "target": "sametab"
+      },
+      {
+        "title": "тест3",
+        "path": "тест4",
+        "target": "newtab"
+      }
+    ],
+    "footerText": ""
+  },
+  "appConfig": {
+    "theme": "basic",
+    "layout": "auto",
+    "iconSize": "medium",
+    "language": "ru",
+    "statusCheck": false,
+    "statusCheckInterval": 60,
+    "auth": {
+      "enableGuestAccess": true,
+      "users": [
+        {
+          "user": "admin",
+          "hash": "8C6976E5B5410415BDE908BD4DEE15DFB167A9C873FC4BB8A81F6F2AB448A918",
+          "type": "admin"
+        }
+      ],
+      "enableKeycloak": false
+    },
+    "showSplashScreen": false,
+    "preventWriteToDisk": false,
+    "preventLocalSave": false,
+    "disableConfiguration": false,
+    "disableConfigurationForNonAdmin": true,
+    "allowConfigEdit": true,
+    "enableServiceWorker": false,
+    "disableContextMenu": true,
+    "disableUpdateChecks": false,
+    "disableSmartSort": true,
+    "enableErrorReporting": false
+  },
+  "sections": [
+    {
+      "name": "Ссылки быстрого доступа",
+      "icon": "fas fa-list",
+      "displayData": {
+        "sortBy": "default",
+        "rows": 1,
+        "cols": 1,
+        "collapsed": false,
+        "hideForGuests": false
+      },
+      "items": [
+        {
+          "title": "Фридом",
+          "description": "Фридом",
+          "icon": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT-48vimLCj4CB5m24VHN2RZBsMjLxYLn5EvQ&s",
+          "url": "https://lk.freedom1.ru/user/login",
+          "target": "newtab",
+          "id": "0_22831_"
+        },
+        {
+          "title": "github",
+          "description": "awweso.me",
+          "icon": "https://cdn.jsdelivr.net/gh/walkxcode/dashboard-icons/svg/github.svg",
+          "url": "https://github.com/AizenBerg91/Home-doker",
+          "id": "1_22831_github"
+        },
+        {
+          "title": "AdminVPS",
+          "icon": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSVy2-magfOcfel3AnSfLDjDi8gYJ4VWbhGoQ&s",
+          "url": "https://my.adminvps.ru/clientarea.php?action=services",
+          "id": "2_22831_adminvps"
+        },
+        {
+          "title": "mariushosting",
+          "icon": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQcGMMy0W149Ki1VwsoovVkz1Oz6J9Eh7crtw&s",
+          "url": "https://mariushosting.com/",
+          "id": "3_22831_mariushosting"
+        },
+        {
+          "title": "community HA",
+          "icon": "https://static-00.iconduck.com/assets.00/home-assistant-icon-1022x1024-94vbmieb.png",
+          "url": "https://community.home-assistant.io/c/blueprints-exchange/53/l/top?period=yearly",
+          "id": "4_22831_communityha"
+        }
+      ]
+    },
+    {
+      "name": "Сервера и Сервисы",
+      "icon": "fas fa-server",
+      "items": [
+        {
+          "title": "Synology",
+          "description": "тест",
+          "icon": "https://play-lh.googleusercontent.com/HjbYWbXJ-6e6Cia-mBbHDSdontW1yE6MHMaXqlHW80CQegDOEPQ1HGACxvEpnqCUHgo",
+          "url": "https://ds.aizen.myds.me/",
+          "target": "newtab",
+          "statusCheck": true,
+          "statusCheckAllowInsecure": true,
+          "statusCheckAcceptCodes": "200",
+          "id": "0_16241_synology"
+        },
+        {
+          "title": "Portainer",
+          "description": "тест",
+          "icon": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSMhgdU2EN97vkzxX--YB_sznBmTz0SJpnbKg&s",
+          "url": "http://aizen.myds.me:9000/",
+          "target": "newtab",
+          "id": "1_16241_portainer"
+        },
+        {
+          "title": "Adguard",
+          "description": "тест",
+          "icon": "https://static-00.iconduck.com/assets.00/adguard-home-icon-507x512-ovjn0dm6.png",
+          "url": "https://ad.aizen.myds.me/",
+          "target": "newtab",
+          "id": "2_16241_adguard"
+        },
+        {
+          "title": "Kuma",
+          "description": "тест",
+          "icon": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRgXGlZworXJd3VTGR7B2O6pjrt7zbceGW32w&s",
+          "url": "http://aizen.myds.me:3002/",
+          "target": "newtab",
+          "id": "3_16241_kuma"
+        },
+        {
+          "title": "Создание диаграмм",
+          "description": "draw.io",
+          "icon": "https://cdn.jsdelivr.net/gh/walkxcode/dashboard-icons/png/draw-io.png",
+          "url": "http://aizen.myds.me:5022",
+          "target": "newtab",
+          "id": "4_16241_"
+        },
+        {
+          "title": "Web Check",
+          "icon": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSnrPqqAcJdA_NRKJtvDD8y-yG9FkdhAb-afw&s",
+          "url": "https://wc.aizen.myds.me/",
+          "id": "5_16241_webcheck"
+        },
+        {
+          "title": "Stirling-PDF",
+          "icon": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT2cxDi3NMDz1u7ROiDhCznP9_w8hR2Vz9JyA&s",
+          "url": "https://pdf.aizen.myds.me/",
+          "id": "6_16241_stirlingpdf"
+        }
+      ],
+      "displayData": {
+        "sortBy": "default",
+        "rows": 2,
+        "cols": 1,
+        "collapsed": false,
+        "hideForGuests": false
+      }
+    },
+    {
+      "name": "Медиа",
+      "icon": "fas fa-play",
+      "displayData": {
+        "sortBy": "default",
+        "rows": 1,
+        "cols": 1,
+        "collapsed": false,
+        "hideForGuests": false
+      },
+      "items": [
+        {
+          "title": "Emby",
+          "description": "Emby",
+          "icon": "https://play-lh.googleusercontent.com/x2eHcquFzIsSuhwXmbvD_xouXUxMkAfdak0z8zayXU_OzC9yYxBdbur3nE_kE4kazg",
+          "url": "https://eb.aizen.myds.me/",
+          "target": "newtab",
+          "id": "0_5357_emby"
+        },
+        {
+          "title": "TubeSync",
+          "icon": "https://d4.alternativeto.net/-pZpAgknXT7r-xHoiOhxe-qAnblMPHpPdMh7uqwPYMc/rs:fit:280:280:0/g:ce:0:0/exar:1/YWJzOi8vZGlzdC9pY29ucy90dWJlc3luY18yMTk4MDMucG5n.png",
+          "url": "https://tc.aizen.myds.me/",
+          "id": "1_5357_tubesync"
+        },
+        {
+          "title": "Linkwarden",
+          "icon": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSn_-T6zBBrOp0rjQsSX-TXgpkXnWrKgSW3Qg&s",
+          "url": "https://ln.aizen.myds.me/",
+          "id": "2_5357_linkwarden"
+        }
+      ]
+    },
+    {
+      "name": "Умный Дом",
+      "icon": "fas fa-desktop",
+      "displayData": {
+        "sortBy": "default",
+        "rows": 1,
+        "cols": 1,
+        "collapsed": false,
+        "hideForGuests": false
+      },
+      "items": [
+        {
+          "title": "Home Assistant",
+          "description": "тест",
+          "icon": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS_YgjLbJ1NuCG6Ejyr1uvW7NhjOY5QLIzesw&s",
+          "url": "https://ha.aizen.myds.me/",
+          "statusCheck": true,
+          "statusCheckAllowInsecure": true,
+          "statusCheckAcceptCodes": "200",
+          "target": "newtab",
+          "id": "0_8654_homeassistant"
+        },
+        {
+          "title": "Configurator",
+          "description": "тест",
+          "icon": "https://brands.home-assistant.io/_/configurator/logo.png",
+          "url": "http://aizen.myds.me:3218/",
+          "target": "newtab",
+          "id": "1_8654_configurator"
+        },
+        {
+          "title": "Mqtt Explorer",
+          "description": "тест",
+          "icon": "https://mqtt-explorer.com/icon.png",
+          "url": "http://aizen.myds.me:4000/",
+          "target": "newtab",
+          "id": "2_8654_mqttexplorer"
+        },
+        {
+          "title": "Yandex",
+          "description": "Yandex",
+          "icon": "https://cdn.jsdelivr.net/gh/walkxcode/dashboard-icons/svg/yandex.svg",
+          "url": "https://yandex.ru/quasar/",
+          "id": "3_8654_yandex"
+        },
+        {
+          "title": "Кузя",
+          "icon": "https://avatars.mds.yandex.net/get-dialogs/1676983/44f6c581790b6e022aa9/catalogue-icon-x4",
+          "url": "https://alexstar.ru/smarthome",
+          "id": "4_8654_"
+        }
+      ]
+    },
+    {
+      "name": "Устройства",
+      "icon": "fas fa-pencil",
+      "displayData": {
+        "sortBy": "default",
+        "rows": 1,
+        "cols": 1,
+        "collapsed": false,
+        "hideForGuests": false
+      },
+      "items": [
+        {
+          "title": "Eltex",
+          "description": "Eltex",
+          "icon": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR2ufkkgj0OyEHApstbUYmzd6eLzN9nS67zYdl66D4_wLIMrYR-D65_2rSyRit9aPhMROM&usqp=CAU",
+          "url": "http://192.168.99.1",
+          "target": "newtab",
+          "id": "0_10818_eltex"
+        },
+        {
+          "title": "Tp-link",
+          "description": "Tp-link",
+          "icon": "https://cdn.jsdelivr.net/gh/walkxcode/dashboard-icons/png/tp-link.png",
+          "url": "http://192.168.2.6",
+          "target": "newtab",
+          "id": "1_10818_tplink"
+        },
+        {
+          "title": "Asus",
+          "description": "Asus",
+          "icon": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSvYrjhLB3UJZDjsvkfNCX1WOJM4mM_RKMW_w&s",
+          "url": "http://192.168.2.3",
+          "target": "newtab",
+          "id": "2_10818_asus"
+        },
+        {
+          "title": "Zyxel",
+          "description": "Zyxel",
+          "icon": "https://cdn.jsdelivr.net/gh/walkxcode/dashboard-icons/svg/zyxel-communications.svg",
+          "url": "http://192.168.2.5",
+          "target": "newtab",
+          "id": "3_10818_zyxel"
+        },
+        {
+          "title": "Hikvision",
+          "description": "Hikvision",
+          "icon": "https://cdn.jsdelivr.net/gh/walkxcode/dashboard-icons/svg/hikvision.svg",
+          "url": "http://192.168.2.9",
+          "target": "newtab",
+          "id": "4_10818_hikvision"
+        },
+        {
+          "title": "Trassir",
+          "description": "Trassir",
+          "icon": "https://www.aktivsb.ru/images/brendy/trassir.png",
+          "url": "http://192.168.2.8",
+          "target": "newtab",
+          "id": "5_10818_trassir"
+        }
+      ]
+    },
+    {
+      "name": "VPS",
+      "icon": "fas fa-server",
+      "displayData": {
+        "sortBy": "default",
+        "rows": 1,
+        "cols": 1,
+        "collapsed": false,
+        "hideForGuests": false
+      },
+      "items": [
+        {
+          "title": "Portainer",
+          "icon": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSMhgdU2EN97vkzxX--YB_sznBmTz0SJpnbKg&s",
+          "url": "https://45.129.186.42:9443/#!/auth",
+          "id": "0_249_portainer"
+        },
+        {
+          "title": "wireguard",
+          "icon": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcToJsljDAjndIVVciZ089VNqe_FMH3XRT11jQ&s",
+          "url": "http://45.129.186.42:51821/",
+          "id": "1_249_wireguard"
+        }
+      ]
+    }
+  ]
+}

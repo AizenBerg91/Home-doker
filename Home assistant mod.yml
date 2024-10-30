@@ -1,0 +1,19 @@
+version: "3.9"
+services:
+ mosquitto:
+    image: eclipse-mosquitto
+    container_name: mosquitto
+    restart: unless-stopped
+    ports:
+      - 1883:1883
+      - 9001:9001
+    volumes:
+      - "/volume1/docker/mosquitto/config:/mosquitto/config"
+      - "/volume1/docker/mosquitto/data:/mosquitto/data"
+      - "/volume1/docker/mosquitto/log:/mosquitto/log"
+ mqtt-explorer:
+    image: smeagolworms4/mqtt-explorer
+    container_name: mqtt-explorer
+    restart: unless-stopped
+    ports:
+      - 4000:4000
